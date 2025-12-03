@@ -5,7 +5,7 @@ import java.math.BigDecimal
 
 object VolumeConverter : Converter {
     override val nameResId: Int = R.string.unit_volume
-    override val imageResId: Int = R.drawable.ic_drop_vector
+    override val imageResId: Int = R.drawable.ic_drink
     override val key: String = "VolumeConverter"
 
     sealed class Unit(nameResId: Int, symbolResId: Int, factor: BigDecimal, key: String) :

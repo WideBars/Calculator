@@ -29,9 +29,9 @@
         android:layout_marginStart="@dimen/activity_margin"
         android:layout_marginEnd="@dimen/activity_margin"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="4"
+        app:spanCount="3"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:itemCount="20"
+        tools:itemCount="6"
         tools:listitem="@layout/item_unit_type" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

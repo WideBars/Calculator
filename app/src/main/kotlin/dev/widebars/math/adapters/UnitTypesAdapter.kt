@@ -11,6 +11,7 @@ import dev.widebars.commons.extensions.darkenColor
 import dev.widebars.commons.extensions.getProperBackgroundColor
 import dev.widebars.commons.extensions.getProperPrimaryColor
 import dev.widebars.commons.extensions.getProperTextColor
+import dev.widebars.commons.extensions.getSurfaceColor
 import dev.widebars.math.R
 import dev.widebars.math.activities.SimpleActivity
 import dev.widebars.math.databinding.ItemUnitTypeBinding
@@ -46,9 +47,9 @@ class UnitTypesAdapter(
                 val layerDrawable =
                     rippleBg.findDrawableByLayerId(R.id.background_holder) as LayerDrawable
                 layerDrawable.findDrawableByLayerId(R.id.background_stroke)
-                    .applyColorFilter(context.getStrokeColor())
+                    .applyColorFilter(context.getSurfaceColor())
                 layerDrawable.findDrawableByLayerId(R.id.background_shape)
-                    .applyColorFilter(context.getProperBackgroundColor().darkenColor(2))
+                    .applyColorFilter(context.getSurfaceColor())
                 binding.unitBackground.background = rippleBg
 
                 binding.unitLabel.setTextColor(activity.getProperTextColor())

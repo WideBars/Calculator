@@ -7,7 +7,9 @@ import android.view.WindowManager
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import dev.widebars.commons.extensions.beVisibleIf
+import dev.widebars.commons.extensions.getProperPrimaryColor
 import dev.widebars.commons.extensions.getProperTextColor
+import dev.widebars.commons.extensions.getSurfaceColor
 import dev.widebars.commons.extensions.performHapticFeedback
 import dev.widebars.commons.extensions.viewBinding
 import dev.widebars.commons.helpers.LOWER_ALPHA_INT
@@ -123,25 +125,30 @@ class UnitConverterActivity : SimpleActivity(), ConverterView.OnUnitChangedListe
         vibrateOnButtonPress = config.vibrateOnButtonPress
 
         binding.viewUnitConverter.apply {
-            arrayOf(btnClear, btnDecimal).forEach {
+            val primaryColor = getProperPrimaryColor()
+
+            arrayOf(btnClear).forEach {
                 it.background = ResourcesCompat.getDrawable(
                     resources,
                     R.drawable.pill_background,
                     theme
-                )
-                it.background?.alpha = MEDIUM_ALPHA_INT
+                )?.mutate()
+                it.background?.setTint(primaryColor)
+//                it.background?.alpha = MEDIUM_ALPHA_INT
             }
 
-            arrayOf(btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9).forEach {
+            val surfaceColor = getSurfaceColor()
+            arrayOf(btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnDecimal).forEach {
                 it.background = ResourcesCompat.getDrawable(
                     resources,
                     R.drawable.pill_background,
                     theme
-                )
-                it.background?.alpha = LOWER_ALPHA_INT
+                )?.mutate()
+                it.background?.setTint(surfaceColor)
+//                it.background?.alpha = MEDIUM_ALPHA_INT //LOWER_ALPHA_INT
             }
 
-            if (plusMinusLayout.isVisible) {
+            if (btnPlusMinus.isVisible) {
                 updatePlusMinusButton()
             }
         }
@@ -172,7 +179,7 @@ class UnitConverterActivity : SimpleActivity(), ConverterView.OnUnitChangedListe
                 else -> true
             }
 
-        binding.viewUnitConverter.plusMinusLayout.beVisibleIf(shouldShowNegativeButton)
+        binding.viewUnitConverter.btnPlusMinus.beVisibleIf(shouldShowNegativeButton)
         if (shouldShowNegativeButton) updatePlusMinusButton()
     }
 
@@ -196,6 +203,8 @@ class UnitConverterActivity : SimpleActivity(), ConverterView.OnUnitChangedListe
     private fun updatePlusMinusButton() {
         with(binding.viewUnitConverter) {
             btnPlusMinus.background = pillDrawable
+            val primaryColor = getProperPrimaryColor()
+            btnPlusMinus.background.setTint(primaryColor)
             btnPlusMinus.background?.alpha = MEDIUM_ALPHA_INT
         }
     }

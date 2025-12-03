@@ -14,13 +14,10 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.TextViewCompat
 import me.grantland.widget.AutofitHelper
 import dev.widebars.commons.dialogs.RadioGroupDialog
-import dev.widebars.commons.extensions.adjustAlpha
 import dev.widebars.commons.extensions.applyColorFilter
 import dev.widebars.commons.extensions.copyToClipboard
 import dev.widebars.commons.extensions.getProperPrimaryColor
 import dev.widebars.commons.extensions.getProperTextColor
-import dev.widebars.commons.extensions.lightenColor
-import dev.widebars.commons.helpers.LOWER_ALPHA
 import dev.widebars.commons.helpers.MEDIUM_ALPHA_INT
 import dev.widebars.commons.models.RadioItem
 import dev.widebars.math.R
@@ -121,6 +118,7 @@ class ConverterView @JvmOverloads constructor(
 //        binding.topUnitHolder.background = rippleDrawable
         binding.swapButton?.applyColorFilter(context.getProperPrimaryColor())
 
+        val primaryColor = context.getProperPrimaryColor()
         listOf(binding.topUnitSymbol, binding.bottomUnitSymbol).forEach {
             val drawable = ResourcesCompat.getDrawable(
                 resources, R.drawable.pill_background, context.theme
@@ -135,6 +133,7 @@ class ConverterView @JvmOverloads constructor(
                 dev.widebars.commons.R.dimen.rounded_corner_radius_big
             )
             it.background = drawable
+            it.background.setTint(primaryColor)
             it.background?.alpha = MEDIUM_ALPHA_INT
         }
     }

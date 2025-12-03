@@ -21,7 +21,7 @@ evalex = "3.5.0"
 #Room
 room = "2.8.4"
 #Widebars
-commons = "206f084ab9"
+commons = "a20f6f6fa1"
 swipeToActionLayout = "0f7632fc36"
 #Gradle
 gradlePlugins-agp = "8.11.1"

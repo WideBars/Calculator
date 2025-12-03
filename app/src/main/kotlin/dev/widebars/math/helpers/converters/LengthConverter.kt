@@ -5,7 +5,7 @@ import java.math.BigDecimal
 
 object LengthConverter : Converter {
     override val nameResId: Int = R.string.unit_length
-    override val imageResId: Int = R.drawable.ic_height_vector
+    override val imageResId: Int = R.drawable.ic_square_foot_vector
     override val key: String = "LengthConverter"
 
     sealed class Unit(nameResId: Int, symbolResId: Int, factor: BigDecimal, key: String) :
